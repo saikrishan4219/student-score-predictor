@@ -8,7 +8,7 @@ model = pickle.load(open('student_score_model.pkl', 'rb'))
 feature_columns = pickle.load(open('feature_columns.pkl', 'rb'))
 
 # MySQL Database connection
-engine = create_engine("mysql+pymysql://root:root@localhost/student_db")
+engine = create_engine("mysql+pymysql://sql12780298:jyJD7RaKFq@sql12.freesqldatabase.com:3306/sql12780298")
 
 # Streamlit UI - Collect user input
 st.title("Student Score Prediction")
@@ -25,7 +25,7 @@ prep = st.selectbox("Test Preparation Course", ['none', 'completed'])
 if st.button("Predict"):
     # Fetch relevant data from MySQL based on user input
     query = f"""
-        SELECT * FROM students 
+        SELECT * FROM student_scores 
         WHERE gender = '{gender}' 
         AND race_ethnicity = '{race}' 
         AND parental_level_of_education = '{parent_edu}' 
